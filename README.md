@@ -2,15 +2,14 @@
 
 This repository contains a copy of code for Value of Vote group project for demonstration purposes and includes some updates. Original repositories used for the project with contributions from team members can be viewed at:
 
-Documentation: https://github.com/MichaelWStein/Reports
-Code: https://github.com/MichaelWStein/Data/tree/master/ValueofVote_App
+* Documentation: https://github.com/MichaelWStein/Reports
+* Code: https://github.com/MichaelWStein/Data/tree/master/ValueofVote_App
 
 
 ### Project Overview: 
 
-Purpose of this project is to determine how important a person’s vote is based on their residence. Data from the 2016  Statscan survey is used.
 
-A Python Flask app is created with data visualizations to determine how important a person’s vote is in Canadian Federal Elections based on their residence.
+A Python Flask app is created with data visualizations to determine how important a person’s vote is in Canadian Federal Elections based on their residence. Data from the 2016  Statscan survey is used.
 
 Technologies used: Python (Flask, Pandas, Numpy, Json, etc.), HTML/CSS, JavaScript (d3.js, plotly, leaflet, etc.)
 
