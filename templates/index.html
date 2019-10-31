@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Value of Vote</title>
+
+  <!-- Bootstrap & css -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" /> 
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  
+
+
+   <!-- Leaflet CSS & JS -->
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+   integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+   crossorigin=""></script>
+
+
+   <!-- D3 & Plotly -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- <div class="container-fluid"> -->
+    <!-- Header -->
+    <div class="row" id="title-header">
+      <div class="col-md-7" style="padding-top:15px">
+        <h1>Value of Vote</h1>
+        <h4>Canadian Federal Elections</h4>
+      </div>
+
+      <div class="col-md-5"  id="image" >
+          <img src="{{ url_for('static', filename='images/TheMapleLeaf.png') }}" alt="TheMapleLeaf" height="100" width="100" align="left">
+      </div>
+    </div>
+
+    
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      
+        <div class="collapse navbar-collapse" id="navbarColor01">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Province <span class="sr-only">(current)</span> </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/electoral_districts">Districts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+    
+  
+
+    <div class="alert alert-dismissible alert-primary" style="padding-bottom:0px">
+        
+
+        <h5>Analysis by Province</h5>
+        <p>Value of vote determines how important a person’s vote is based on their residence, with a baseline of 100% representing national average.
+          <a href="/about"> Click here to know more about how value of vote is calculated.</a>
+        </p>
+        
+        <p>
+            Overall, it is observed that the distribution of Federal Electoral Districts or seats among provinces is fair. 
+            Some of the large territorial areas like Northwest Territories and Nunavut have very high value of vote compared to national average, 
+            however this is a good compromise to provide at least some representation from them. 
+            However, there is no good reason for ‘overvaluing’ Prince Edward Island and electoral districts should be adjusted slightly 
+            to provide an increased vote value for Alberta which currently has the lowest value of vote. 
+        </p>
+    </div>
+
+
+  <div class=row id="map">
+
+    <div class="col-md-7"id="map">
+      <div class="row">
+        <h6> Map - Value of Vote for provinces</h6>
+      </div>
+        <div class=row>
+            <p>
+              Value of vote by Province / Territory varies between 288% (Yukon) and 87% (Alberta). 
+              Vote values for the two provinces with the largest population are close to 100% - Ontario (94%) and Quebec (99%).    
+              Most of the high vote value Provinces/Territories are geographically large and thinly populated so 
+              there is little distortion in the overall representation of the population. 
+              The exception is Prince Edward Island with a vote-value of 287%.
+            </p>
+        </div>
+        <div class=row id="map-province"></div>
+        
+    </div>
+
+    <div class="col-md-5">
+
+      <div class=row>
+        <div class="col-md-12">
+          <div class=row>
+            <h6 style="padding-left: 50px">Population vs #seats vs Value of vote</h6>
+          </div>
+          <div class=row>
+              <p style="padding-left:50px; padding-right: 30px"> 
+                Generally, it is observed that higher the population of a province, higher the number of seats, lower the value of vote.
+                Size and color of the bubbles in below chart represents the value of vote. Lighter color (yellow) and smaller size indicate 
+                lower value while darker color(red) and bigger size indicate higher value of vote.
+              </p>
+          </div>
+          <div id="bubble"></div>
+        <!-- </div>
+
+        <div class="col-md-12"> -->
+            <div class=row>
+                <h6 style="padding-left: 50px">Population per Seat</h6>
+                <p style="padding-left:50px; padding-right: 30px"> 
+                  Overall, at a national level, it takes approximately 100K Canadians to elect 1 seat. 
+                  However, this varies across provinces and is highest for Alberta at around 120k causing lowest value of vote
+                  compared to all provinces and territories.
+                </p>
+            </div>
+          <div id="chartdiv"></div>
+        </div>
+
+      </div>
+      
+     
+    </div>
+
+  </div>
+
+
+   <!-- Resources -->
+  <script src="https://www.amcharts.com/lib/4/core.js"></script>
+  <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+  <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+  <!-- Mapbox API key & JS -->
+  <script type="text/javascript" src="{{ url_for('static', filename='js/config.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app_prov.js') }}"></script>
+
+<!--Bootstrap-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+ 
+
+
+

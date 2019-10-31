@@ -1,0 +1,96 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Value of Vote</title>
+
+  <!-- Bootstrap & css -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" /> 
+  <link rel="stylesheet" href="../static/css/style.css">
+
+   <!-- Leaflet CSS & JS -->
+   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
+   integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
+   integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+   crossorigin=""></script>
+
+
+   <!-- D3 & Plotly -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <!-- Header -->
+    <div class="row" id="title-header">
+      <div class="col-md-7">
+        <h1>Value of Vote</h1>
+        <h4>Canadian Federal Elections</h4>
+      </div>
+
+      <div class="col-md-5"  id="image" >
+          <img src="../static/images/TheMapleLeaf.png" alt="TheMapleLeaf" height="100" width="100" align="left">
+      </div>
+    </div>
+
+    
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item ">
+            <a class="nav-link" href="/">Province</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/electoral_districts">Districts</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">About<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+      
+      </div>
+    </nav>
+
+ 
+    <div class="alert alert-dismissible alert-primary" style="padding-bottom:0px">
+      <h5>About</h5>
+    </div>
+
+
+  </div> 
+
+  <div class="jumbotron">
+      <h2>Value of Vote</h2>
+      <p class="lead"> Canada : Total Population - 35 Mn | Seats - 338 </p>
+      <p class="lead" style="color:darkslategrey">Value of vote determines how important a person’s vote is based on their residence. 
+      The baseline (or 100%) is the total population (35 Mn) divided by the number of electoral districts or seats (338) i.e. approximately 1 seat per 100k Canadians . The national average is 100K people per elected candidate and in an electoral district if there are 50k people,then the ‘value’ of a single vote would be 150% of baseline. 
+      If, on the other hand,  150k people live in an electoral district, the value of a single vote would be 67% of the baseline.
+      Data from the 2016  Statscan survey is used.
+    </p>
+  </div>
+ 
+
+</body>
+
+</html>
+
+
+ 
+
+
+
