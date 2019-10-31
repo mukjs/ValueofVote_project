@@ -17,10 +17,10 @@ Technologies used: Python (Flask, Pandas, Numpy, Json, etc.), HTML/CSS, JavaScri
 Below are the screenshots from the app:
 
 ### Analysis of Provinces:
-![Provinces](static/images/Screen Shot_provinces.png)
+![Provinces](static/images/ScreenShot_provinces.png)
 
 ### Analysis of Electoral Districts:
-![Electoral_districts](static/images/Screen Shot_ed.png)
+![Electoral_districts](static/images/ScreenShot_ed.png)
 
 ### Definitions:
-![About](static/images/Screen Shot_about.png
+![About](static/images/ScreenShot_about.png)
