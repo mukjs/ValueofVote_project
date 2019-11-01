@@ -3,7 +3,7 @@ data/.DS_Store
 .DS_Store
 __pycache__/config.cpython-36.pyc
 config.py
-static/js/config.js
 data/test_prov.json
 data/gpr_000b11a_e.zip
 templates/languages.html
+.ipynb_checkpoints/Census_cleanup-checkpoint.ipynb
