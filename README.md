@@ -16,9 +16,6 @@ Below are the screenshots from the app:
 ### Analysis of Electoral Districts:
 ![Electoral_districts](static/images/ScreenShot_ed.png)
 
-### Definitions:
-![About](static/images/ScreenShot_about.png)
-
 ## Note:
 
 This repository contains a copy of code for Value of Vote group project for demonstration purposes and includes some updates. Original repositories used for the project with contributions from team members can be viewed at:
